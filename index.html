@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Mr Innocent Moyo — Educator & Principal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cormorant+SC:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+:root{
+  --parchment:  #f7f2e8;
+  --cream:      #fdfaf4;
+  --ink:        #1c1a14;
+  --ink-lt:     #2e2b22;
+  --brown:      #5c4a2a;
+  --brown-lt:   #8a7045;
+  --gold:       #c9a84c;
+  --gold-lt:    #e8cf8a;
+  --rule:       rgba(92,74,42,0.25);
+  --muted:      #7a6e58;
+  --red:        #7a1f1f;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  font-family:'EB Garamond',serif;
+  background:var(--parchment);
+  color:var(--ink);
+  line-height:1.75;
+  overflow-x:hidden;
+}
+
+/* ── PAPER TEXTURE ── */
+body::before{
+  content:'';
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  background-size:300px 300px;
+  opacity:1;
+}
+*{position:relative;z-index:1;}
+
+/* ── NAV ── */
+nav{
+  background:var(--ink);
+  padding:0 6vw;
+  display:flex;align-items:center;justify-content:space-between;
+  height:60px;
+  position:sticky;top:0;z-index:500;
+}
+.nav-name{
+  font-family:'Cormorant SC',serif;
+  font-size:1rem;letter-spacing:0.12em;
+  color:var(--gold-lt);text-decoration:none;
+}
+nav ul{
+  list-style:none;display:flex;gap:32px;
+}
+nav a{
+  font-family:'EB Garamond',serif;
+  font-size:0.88rem;letter-spacing:0.08em;
+  color:rgba(253,250,244,0.55);text-decoration:none;
+  transition:color 0.2s;
+  font-style:italic;
+}
+nav a:hover{color:var(--gold-lt);}
+
+/* ── ORNAMENT DIVIDER ── */
+.ornament{
+  display:flex;align-items:center;gap:16px;
+  margin:0 auto;
+  width:fit-content;
+  padding:12px 0;
+}
+.ornament-line{
+  width:80px;height:1px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+}
+.ornament-diamond{
+  width:8px;height:8px;
+  background:var(--gold);
+  transform:rotate(45deg);
+}
+.ornament-sm .ornament-line{width:40px;}
+.ornament-sm .ornament-diamond{width:5px;height:5px;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  background:var(--cream);
+  border-bottom:2px solid var(--ink);
+}
+
+.hero-left{
+  display:flex;flex-direction:column;
+  justify-content:center;
+  padding:100px 6vw 80px 8vw;
+  border-right:1px solid var(--rule);
+}
+
+.hero-eyebrow{
+  font-family:'Cormorant SC',serif;
+  font-size:0.72rem;letter-spacing:0.22em;
+  color:var(--brown-lt);margin-bottom:28px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{
+  content:'';display:block;
+  width:36px;height:1px;
+  background:var(--gold);
+}
+
+.hero-name{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(2.5rem,5vw,4.8rem);
+  font-weight:700;
+  line-height:1.05;
+  color:var(--ink);
+  margin-bottom:6px;
+}
+.hero-name span{
+  display:block;
+  font-size:0.55em;
+  font-weight:400;
+  font-style:italic;
+  color:var(--brown-lt);
+  letter-spacing:0.06em;
+  margin-bottom:8px;
+}
+
+.hero-title{
+  font-family:'Cormorant SC',serif;
+  font-size:1rem;letter-spacing:0.18em;
+  color:var(--red);margin-top:16px;
+  text-transform:uppercase;
+}
+
+.hero-desc{
+  font-size:1.05rem;
+  color:var(--muted);
+  max-width:420px;
+  margin-top:28px;
+  font-style:italic;
+  line-height:1.8;
+  border-left:2px solid var(--gold);
+  padding-left:18px;
+}
+
+.hero-badges{
+  display:flex;gap:10px;flex-wrap:wrap;margin-top:36px;
+}
+.badge{
+  border:1px solid var(--rule);
+  padding:6px 16px;
+  font-family:'Cormorant SC',serif;
+  font-size:0.7rem;letter-spacing:0.12em;
+  color:var(--brown);
+  background:rgba(201,168,76,0.06);
+}
+
+.hero-right{
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:100px 8vw 80px 6vw;
+  gap:32px;
+}
+
+/* PORTRAIT FRAME */
+.portrait-frame{
+  width:240px;height:300px;
+  position:relative;
+}
+.portrait-frame::before{
+  content:'';
+  position:absolute;
+  top:-10px;left:-10px;right:10px;bottom:10px;
+  border:1px solid var(--gold);
+  pointer-events:none;
+  z-index:2;
+}
+.portrait-frame::after{
+  content:'';
+  position:absolute;
+  top:10px;left:10px;right:-10px;bottom:-10px;
+  border:1px solid var(--rule);
+  pointer-events:none;
+  z-index:0;
+}
+
+/* ── IMAGE PLACEHOLDER ── */
+.img-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(135deg,#e8e0d0,#d4c9b0);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  text-align:center;
+  gap:8px;
+  position:relative;z-index:1;
+}
+.img-placeholder .img-icon{font-size:2.5rem;opacity:0.4;}
+.img-placeholder p{
+  font-family:'Cormorant SC',serif;
+  font-size:0.65rem;letter-spacing:0.12em;
+  color:var(--brown);opacity:0.7;
+  padding:0 12px;line-height:1.5;
+}
+/* REAL IMAGE — replace placeholder with this pattern */
+.portrait-img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:top center;
+  display:block;position:relative;z-index:1;
+}
+
+.hero-meta{
+  text-align:center;
+}
+.meta-item{
+  font-family:'EB Garamond',serif;
+  font-size:0.9rem;color:var(--muted);
+  margin-bottom:6px;font-style:italic;
+}
+.meta-item strong{
+  font-style:normal;color:var(--ink);font-weight:500;
+}
+
+/* ── SECTION SHARED ── */
+section{padding:90px 8vw;}
+
+.section-header{text-align:center;margin-bottom:64px;}
+
+.section-label{
+  font-family:'Cormorant SC',serif;
+  font-size:0.7rem;letter-spacing:0.25em;
+  color:var(--brown-lt);
+  display:block;margin-bottom:14px;
+}
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(1.8rem,3.5vw,3rem);
+  font-weight:500;
+  color:var(--ink);
+  margin-bottom:20px;
+}
+.section-title em{font-style:italic;color:var(--brown);}
+
+/* ── ABOUT ── */
+#about{background:var(--parchment);}
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1px 1fr;
+  gap:0;
+  max-width:1000px;
+  margin:0 auto;
+}
+.about-divider{background:var(--rule);}
+.about-col{padding:0 48px;}
+.about-col:first-child{padding-left:0;}
+.about-col:last-child{padding-right:0;}
+.about-col h3{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;font-weight:500;
+  color:var(--ink);margin-bottom:14px;
+  display:flex;align-items:center;gap:10px;
+}
+.about-col h3::after{
+  content:'';flex:1;height:1px;background:var(--rule);
+}
+.about-col p{
+  font-size:1rem;color:var(--muted);
+  line-height:1.8;margin-bottom:14px;
+  font-style:italic;
+}
+.skills-list{
+  display:flex;flex-wrap:wrap;gap:8px;margin-top:16px;
+}
+.skill-tag{
+  font-family:'Cormorant SC',serif;
+  font-size:0.7rem;letter-spacing:0.1em;
+  border:1px solid var(--rule);
+  padding:5px 14px;color:var(--brown);
+  background:rgba(201,168,76,0.05);
+}
+
+/* ── TIMELINE ── */
+#timeline{
+  background:var(--ink);
+  color:var(--parchment);
+}
+#timeline .section-title{color:var(--parchment);}
+#timeline .section-label{color:var(--gold);}
+
+.timeline{
+  max-width:800px;margin:0 auto;
+  position:relative;
+}
+.timeline::before{
+  content:'';
+  position:absolute;left:50%;top:0;bottom:0;
+  width:1px;background:rgba(201,168,76,0.25);
+  transform:translateX(-50%);
+}
+
+.tl-item{
+  display:grid;
+  grid-template-columns:1fr 40px 1fr;
+  gap:0;
+  margin-bottom:56px;
+  align-items:start;
+}
+
+.tl-left{text-align:right;padding-right:32px;padding-top:4px;}
+.tl-right{padding-left:32px;padding-top:4px;}
+
+.tl-dot-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:0;
+}
+.tl-dot{
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--gold);
+  border:2px solid var(--ink);
+  box-shadow:0 0 0 1px var(--gold);
+  flex-shrink:0;
+  margin-top:4px;
+}
+
+.tl-year{
+  font-family:'Cormorant SC',serif;
+  font-size:0.75rem;letter-spacing:0.15em;
+  color:var(--gold);margin-bottom:6px;
+}
+.tl-role{
+  font-family:'Playfair Display',serif;
+  font-size:1.15rem;font-weight:500;
+  color:var(--parchment);margin-bottom:4px;
+  line-height:1.2;
+}
+.tl-place{
+  font-size:0.88rem;font-style:italic;
+  color:rgba(247,242,232,0.5);margin-bottom:8px;
+}
+.tl-detail{
+  font-size:0.88rem;
+  color:rgba(247,242,232,0.55);
+  line-height:1.65;
+}
+
+/* align alternating items */
+.tl-item.left .tl-left{order:1;}
+.tl-item.left .tl-dot-wrap{order:2;}
+.tl-item.left .tl-right{order:3;visibility:hidden;}
+
+.tl-item.right .tl-left{order:1;visibility:hidden;}
+.tl-item.right .tl-dot-wrap{order:2;}
+.tl-item.right .tl-right{order:3;}
+
+/* ── ACHIEVEMENTS ── */
+#achievements{background:var(--cream);}
+
+.ach-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:2px;
+  max-width:1000px;
+  margin:0 auto;
+}
+.ach-card{
+  background:var(--parchment);
+  border:1px solid var(--rule);
+  padding:40px 32px;
+  text-align:center;
+  transition:background 0.25s;
+}
+.ach-card:hover{background:var(--cream);}
+.ach-icon{
+  font-size:2.5rem;display:block;margin-bottom:18px;
+  filter:grayscale(0.3);
+}
+.ach-num{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:700;
+  color:var(--red);line-height:1;
+  margin-bottom:6px;
+}
+.ach-title{
+  font-family:'Cormorant SC',serif;
+  font-size:0.78rem;letter-spacing:0.15em;
+  color:var(--brown);margin-bottom:10px;
+}
+.ach-desc{
+  font-size:0.9rem;font-style:italic;
+  color:var(--muted);line-height:1.65;
+}
+
+/* ── GALLERY ── */
+#gallery{background:var(--parchment);}
+
+.gallery-intro{
+  max-width:600px;margin:0 auto 56px;text-align:center;
+  font-size:1rem;font-style:italic;color:var(--muted);
+}
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  max-width:1000px;
+  margin:0 auto;
+}
+.gallery-item{
+  aspect-ratio:4/3;
+  background:linear-gradient(135deg,#e0d8c8,#ccc2aa);
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+.gallery-item:nth-child(1){grid-column:span 2;aspect-ratio:2/1;}
+.gallery-item img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 0.4s ease;
+  display:block;
+}
+.gallery-item:hover img{transform:scale(1.04);}
+
+.gallery-placeholder{
+  width:100%;height:100%;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:6px;
+}
+.gp-icon{font-size:1.8rem;opacity:0.3;}
+.gp-label{
+  font-family:'Cormorant SC',serif;
+  font-size:0.62rem;letter-spacing:0.12em;
+  color:var(--brown);opacity:0.6;
+  text-align:center;padding:0 8px;
+}
+
+.gallery-caption{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(28,26,20,0.85),transparent 50%);
+  display:flex;align-items:flex-end;
+  padding:16px;
+  opacity:0;transition:opacity 0.3s;
+}
+.gallery-item:hover .gallery-caption{opacity:1;}
+.gallery-caption span{
+  font-family:'Cormorant SC',serif;
+  font-size:0.68rem;letter-spacing:0.1em;
+  color:var(--gold-lt);
+}
+
+/* ── CONTACT ── */
+#contact{
+  background:var(--ink);
+  color:var(--parchment);
+}
+#contact .section-title{color:var(--parchment);}
+#contact .section-label{color:var(--gold);}
+
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  max-width:900px;
+  margin:0 auto;
+  align-items:start;
+}
+
+.contact-info{}
+.contact-info p{
+  font-size:1rem;font-style:italic;
+  color:rgba(247,242,232,0.55);
+  line-height:1.8;margin-bottom:32px;
+}
+
+.c-line{
+  display:flex;gap:16px;
+  align-items:flex-start;
+  padding:14px 0;
+  border-bottom:1px solid rgba(247,242,232,0.08);
+}
+.c-icon{
+  width:38px;height:38px;flex-shrink:0;
+  border:1px solid rgba(201,168,76,0.2);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1rem;
+  background:rgba(201,168,76,0.04);
+}
+.c-label{
+  font-family:'Cormorant SC',serif;
+  font-size:0.65rem;letter-spacing:0.15em;
+  color:var(--gold);margin-bottom:3px;
+}
+.c-val{
+  font-size:0.9rem;color:rgba(247,242,232,0.7);
+}
+.c-val a{color:var(--gold-lt);text-decoration:none;}
+.c-val a:hover{text-decoration:underline;}
+
+.contact-form{}
+.form-group{margin-bottom:18px;}
+label{
+  font-family:'Cormorant SC',serif;
+  font-size:0.68rem;letter-spacing:0.15em;
+  color:var(--gold);display:block;margin-bottom:7px;
+}
+input,textarea{
+  width:100%;
+  padding:12px 16px;
+  background:rgba(247,242,232,0.05);
+  border:1px solid rgba(201,168,76,0.2);
+  color:var(--parchment);
+  font-family:'EB Garamond',serif;
+  font-size:1rem;
+  outline:none;
+  transition:border-color 0.2s;
+}
+input:focus,textarea:focus{border-color:rgba(201,168,76,0.5);}
+input::placeholder,textarea::placeholder{color:rgba(247,242,232,0.25);font-style:italic;}
+textarea{resize:vertical;min-height:120px;}
+.submit-btn{
+  font-family:'Cormorant SC',serif;
+  font-size:0.78rem;letter-spacing:0.18em;
+  background:var(--gold);color:var(--ink);
+  border:none;padding:14px 32px;
+  cursor:pointer;width:100%;
+  transition:background 0.2s;
+  margin-top:6px;
+}
+.submit-btn:hover{background:var(--gold-lt);}
+
+/* ── FOOTER ── */
+footer{
+  background:var(--ink-lt);
+  border-top:1px solid rgba(201,168,76,0.15);
+  padding:36px 8vw;
+  display:flex;flex-direction:column;align-items:center;gap:16px;
+  text-align:center;
+}
+.footer-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;color:var(--gold-lt);
+  font-style:italic;
+}
+.footer-copy{
+  font-family:'Cormorant SC',serif;
+  font-size:0.65rem;letter-spacing:0.15em;
+  color:rgba(247,242,232,0.22);
+}
+
+/* ── FADE IN ── */
+.fade{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.fade.on{opacity:1;transform:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  #hero{grid-template-columns:1fr;}
+  .hero-right{padding-top:0;padding-bottom:60px;}
+  .about-grid{grid-template-columns:1fr;}
+  .about-divider{display:none;}
+  .about-col{padding:0 0 32px;}
+  .timeline::before{left:20px;}
+  .tl-item{grid-template-columns:20px 1fr;}
+  .tl-item .tl-left,.tl-item.right .tl-left{display:none;}
+  .tl-item .tl-right,.tl-item.left .tl-right{visibility:visible;order:2;}
+  .tl-item.left .tl-dot-wrap,.tl-item.right .tl-dot-wrap{order:1;}
+  .contact-grid{grid-template-columns:1fr;gap:48px;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .gallery-item:nth-child(1){grid-column:span 2;}
+  nav ul{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-name">Mr Innocent Moyo</a>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#timeline">Career</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Educator · Leader · Principal</div>
+
+    <h1 class="hero-name">
+      <span>Mr</span>
+      Innocent<br>Moyo
+    </h1>
+
+    <div class="hero-title">Principal — Crownfield Schools</div>
+
+    <p class="hero-desc">
+      A dedicated educator with over a decade of experience shaping young minds across Zimbabwe and South Africa. Currently leading Crownfield Schools in Roodepoort with distinction.
+    </p>
+
+    <div class="hero-badges">
+      <span class="badge">B.Ed — UNISA 2020</span>
+      <span class="badge">SACE Certified</span>
+      <span class="badge">Geography Specialist</span>
+      <span class="badge">Cambridge Int'l</span>
+    </div>
+  </div>
+
+  <div style="background:var(--rule);width:1px;"></div>
+
+  <div class="hero-right">
+    <!-- ══════════════════════════════════════════
+         IMAGE 1: HERO PORTRAIT
+         Replace the div below with:
+         <img src="your-photo.jpg" alt="Mr Innocent Moyo" class="portrait-img"/>
+         inside the .portrait-frame div.
+         Best size: 480×600px, portrait orientation.
+         A professional headshot or formal photo works best.
+    ══════════════════════════════════════════ -->
+    <div class="portrait-frame">
+      <div class="img-placeholder">
+        <span class="img-icon">🖼</span>
+        <p>Place portrait photo here<br><em>480×600px recommended</em></p>
+      </div>
+    </div>
+
+    <div class="hero-meta">
+      <p class="meta-item"><strong>Roodepoort, Gauteng</strong> — South Africa</p>
+      <p class="meta-item"><strong>Geography</strong> · Social Sciences · English</p>
+      <p class="meta-item" style="margin-top:8px;">
+        <a href="mailto:innocentmoyo58@gmail.com" style="color:var(--brown);font-style:italic;text-decoration:none;">innocentmoyo58@gmail.com</a>
+      </p>
+    </div>
+
+    <div class="ornament ornament-sm">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ABOUT ═══ -->
+<section id="about">
+  <div class="section-header fade">
+    <span class="section-label">Who He Is</span>
+    <h2 class="section-title">Educator, <em>Leader & Mentor</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-col fade">
+      <h3>Background</h3>
+      <p>Mr Innocent Moyo began his educational journey at Hillside Teachers College, University of Zimbabwe, where he earned his Diploma in Education with a focus on Geography and Art & Design.</p>
+      <p>He later pursued his Bachelor of Education at UNISA, specialising in Geography & the Environment and English Home Language — completing it in 2020 while actively teaching.</p>
+      <p>His multilingual proficiency and deep subject knowledge have made him a respected figure across multiple institutions in both Zimbabwe and South Africa.</p>
+    </div>
+
+    <div class="about-divider"></div>
+
+    <div class="about-col fade">
+      <h3>Skills & Expertise</h3>
+      <p>Beyond the classroom, Mr Moyo is recognised for his leadership and strategic vision in educational management — a quality that led to his appointment as Principal at Crownfield Schools.</p>
+      <p>He also serves as a part-time tutor at Jacaranda International in Centurion, delivering the Cambridge International curriculum at both Ordinary and Advanced level.</p>
+      <div class="skills-list">
+        <span class="skill-tag">Curriculum Development</span>
+        <span class="skill-tag">Educational Leadership</span>
+        <span class="skill-tag">Team Coordination</span>
+        <span class="skill-tag">Teacher Supervision</span>
+        <span class="skill-tag">CAPS Curriculum</span>
+        <span class="skill-tag">Cambridge Int'l</span>
+        <span class="skill-tag">Programme Management</span>
+        <span class="skill-tag">Code 10 Driver</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ TIMELINE ═══ -->
+<section id="timeline">
+  <div class="section-header fade">
+    <span class="section-label">Career Journey</span>
+    <h2 class="section-title" style="color:var(--parchment);">A Life in <em style="color:var(--gold-lt);">Education</em></h2>
+    <div class="ornament">
+      <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.5),transparent);"></div>
+      <div class="ornament-diamond" style="background:var(--gold);"></div>
+      <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.5),transparent);"></div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-item left fade">
+      <div class="tl-left">
+        <div class="tl-year">2008</div>
+        <div class="tl-role">Matric Exemption</div>
+        <p class="tl-detail">Completed matric with a full exemption — the foundation of a lifelong educational journey.</p>
+      </div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right"></div>
+    </div>
+
+    <div class="tl-item right fade">
+      <div class="tl-left"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-year">2010 – 2011</div>
+        <div class="tl-role">Diploma in Education</div>
+        <div class="tl-place">Hillside Teachers College, University of Zimbabwe</div>
+        <p class="tl-detail">Qualified as a secondary school teacher with main subjects in Geography and Art & Design.</p>
+      </div>
+    </div>
+
+    <div class="tl-item left fade">
+      <div class="tl-left">
+        <div class="tl-year">2020</div>
+        <div class="tl-role">Bachelor of Education</div>
+        <div class="tl-place">University of South Africa (UNISA)</div>
+        <p class="tl-detail">Completed B.Ed in Senior Phase & FET Teaching, specialising in Geography & the Environment and English Home Language.</p>
+      </div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right"></div>
+    </div>
+
+    <div class="tl-item right fade">
+      <div class="tl-left"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-right">
+        <div class="tl-year">2020 – 2023</div>
+        <div class="tl-role">Educator & Head of Department</div>
+        <div class="tl-place">Lambano Academy NPC, Roodepoort</div>
+        <p class="tl-detail">Led the Humanities department, teaching Geography and Social Sciences under the CAPS curriculum. Achieved a 100% NSC pass rate in Geography in 2023.</p>
+      </div>
+    </div>
+
+    <div class="tl-item left fade">
+      <div class="tl-left">
+        <div class="tl-year">2024 – Present</div>
+        <div class="tl-role">Principal & Educator</div>
+        <div class="tl-place">Crownfield Schools, Roodepoort</div>
+        <p class="tl-detail">Appointed Principal — overseeing staff, curriculum delivery, and school operations while continuing to teach Geography under the CAPS curriculum.</p>
+      </div>
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--gold-lt);box-shadow:0 0 0 3px rgba(232,207,138,0.3);"></div></div>
+      <div class="tl-right"></div>
+    </div>
+
+    <div class="tl-item right fade">
+      <div class="tl-left"></div>
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--gold-lt);box-shadow:0 0 0 3px rgba(232,207,138,0.3);"></div></div>
+      <div class="tl-right">
+        <div class="tl-year">2024 – Present</div>
+        <div class="tl-role">Part-Time Tutor</div>
+        <div class="tl-place">Jacaranda International, Centurion</div>
+        <p class="tl-detail">Delivers Cambridge International Education (Ordinary & Advanced Level) Geography, extending his reach beyond the CAPS curriculum.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ ACHIEVEMENTS ═══ -->
+<section id="achievements">
+  <div class="section-header fade">
+    <span class="section-label">Recognition & Results</span>
+    <h2 class="section-title">Achievements & <em>Awards</em></h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+  </div>
+
+  <div class="ach-grid">
+    <div class="ach-card fade">
+      <span class="ach-icon">🏆</span>
+      <div class="ach-num">100%</div>
+      <div class="ach-title">Geography NSC Pass Rate</div>
+      <p class="ach-desc">Every Geography student under Mr Moyo's tutelage achieved a pass in the 2023 National Senior Certificate Examinations.</p>
+    </div>
+    <div class="ach-card fade">
+      <span class="ach-icon">🎓</span>
+      <div class="ach-num">100%</div>
+      <div class="ach-title">Tourism NSC Pass Rate</div>
+      <p class="ach-desc">Maintained a flawless 100% pass rate in Tourism NSC Examinations in 2024 — a testament to his commitment to academic excellence.</p>
+    </div>
+    <div class="ach-card fade">
+      <span class="ach-icon">📜</span>
+      <div class="ach-num">SACE</div>
+      <div class="ach-title">Professional Certification</div>
+      <p class="ach-desc">Fully certified with the South African Council for Educators, upholding the highest standards of professional teaching conduct.</p>
+    </div>
+    <div class="ach-card fade">
+      <span class="ach-icon">🌍</span>
+      <div class="ach-num">2</div>
+      <div class="ach-title">Countries of Practice</div>
+      <p class="ach-desc">Brought rich cross-border educational experience spanning Zimbabwe and South Africa, across both national and Cambridge curricula.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═══ -->
+<section id="gallery">
+  <div class="section-header fade">
+    <span class="section-label">In the Classroom & Beyond</span>
+    <h2 class="section-title">A <em>Glimpse</em> into His World</h2>
+    <div class="ornament">
+      <div class="ornament-line"></div>
+      <div class="ornament-diamond"></div>
+      <div class="ornament-line"></div>
+    </div>
+    <p class="gallery-intro">A collection of moments from Mr Moyo's career — teaching, leading, and making a difference in the lives of students.</p>
+  </div>
+
+  <!--
+    ══════════════════════════════════════════════════════════
+    GALLERY IMAGES — HOW TO ADD THEM:
+
+    Each .gallery-item below has a .gallery-placeholder div.
+    Replace that div with an <img> tag like this:
+
+      <img src="your-image.jpg" alt="Description" class="portrait-img"/>
+
+    RECOMMENDED SIZES & CAPTIONS:
+    1. First item (wide, spans 2 cols) — 800×400px
+       Caption: e.g. "Classroom session, Lambano Academy 2022"
+
+    2–6. Remaining items — 400×300px each
+       Captions: graduation ceremony, staff events, school activities,
+                 community work, sports day, etc.
+
+    You can use any JPG or PNG photo.
+    ══════════════════════════════════════════════════════════
+  -->
+
+  <div class="gallery-grid">
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Wide photo (800×400px)<br>Classroom or school event</span>
+      </div>
+      <div class="gallery-caption"><span>Classroom · Lambano Academy</span></div>
+    </div>
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Photo 2<br>400×300px</span>
+      </div>
+      <div class="gallery-caption"><span>Graduation Ceremony</span></div>
+    </div>
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Photo 3<br>400×300px</span>
+      </div>
+      <div class="gallery-caption"><span>Staff & Leadership</span></div>
+    </div>
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Photo 4<br>400×300px</span>
+      </div>
+      <div class="gallery-caption"><span>Crownfield Schools</span></div>
+    </div>
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Photo 5<br>400×300px</span>
+      </div>
+      <div class="gallery-caption"><span>Community & Sport</span></div>
+    </div>
+
+    <div class="gallery-item fade">
+      <div class="gallery-placeholder">
+        <span class="gp-icon">📸</span>
+        <span class="gp-label">Photo 6<br>400×300px</span>
+      </div>
+      <div class="gallery-caption"><span>Cambridge Sessions · Jacaranda</span></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact">
+  <div class="section-header fade">
+    <span class="section-label">Get in Touch</span>
+    <h2 class="section-title" style="color:var(--parchment);">Reach Out to <em style="color:var(--gold-lt);">Mr Moyo</em></h2>
+    <div class="ornament">
+      <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+      <div class="ornament-diamond" style="background:var(--gold);"></div>
+      <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.4),transparent);"></div>
+    </div>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info fade">
+      <p>Whether you are a prospective employer, a parent, or a fellow educator, Mr Moyo welcomes professional correspondence and collaboration.</p>
+
+      <div class="c-line">
+        <div class="c-icon">✉️</div>
+        <div>
+          <div class="c-label">Email</div>
+          <div class="c-val"><a href="mailto:innocentmoyo58@gmail.com">innocentmoyo58@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="c-line">
+        <div class="c-icon">📞</div>
+        <div>
+          <div class="c-label">Phone</div>
+          <div class="c-val"><a href="tel:+27787853755">+27 78 785 3755</a></div>
+        </div>
+      </div>
+      <div class="c-line">
+        <div class="c-icon">🏫</div>
+        <div>
+          <div class="c-label">Current School</div>
+          <div class="c-val">Crownfield Schools, Roodepoort</div>
+        </div>
+      </div>
+      <div class="c-line">
+        <div class="c-icon">📍</div>
+        <div>
+          <div class="c-label">Address</div>
+          <div class="c-val">66 5th Street, Roodepoort North<br>Roodepoort, 1724</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form fade">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Full name"/>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="your@email.com"/>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="e.g. Teaching opportunity, collaboration..."/>
+      </div>
+      <div class="form-group">
+        <label for="msg">Message</label>
+        <textarea id="msg" placeholder="Write your message here..."></textarea>
+      </div>
+      <button class="submit-btn" onclick="window.location.href='mailto:innocentmoyo58@gmail.com'">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ornament ornament-sm">
+    <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent);"></div>
+    <div class="ornament-diamond" style="background:var(--gold);"></div>
+    <div class="ornament-line" style="background:linear-gradient(to right,transparent,rgba(201,168,76,0.3),transparent);"></div>
+  </div>
+  <div class="footer-name">Mr Innocent Moyo</div>
+  <p style="font-family:'Cormorant SC',serif;font-size:0.68rem;letter-spacing:0.12em;color:rgba(247,242,232,0.35);">Educator · Head of Department · Principal</p>
+  <div class="footer-copy">© 2026 · Crownfield Schools, Roodepoort · All rights reserved</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach((e,i) => {
+    if(e.isIntersecting){
+      setTimeout(() => e.target.classList.add('on'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold:0.1});
+document.querySelectorAll('.fade').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
