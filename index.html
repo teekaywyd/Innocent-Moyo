@@ -473,7 +473,7 @@ section{padding:90px 8vw;}
   align-items:start;
 }
 
-
+.contact-info{}
 .contact-info p{
   font-size:1rem;font-style:italic;
   color:rgba(247,242,232,0.55);
@@ -504,7 +504,7 @@ section{padding:90px 8vw;}
 .c-val a{color:var(--gold-lt);text-decoration:none;}
 .c-val a:hover{text-decoration:underline;}
 
-
+.contact-form{}
 .form-group{margin-bottom:18px;}
 label{
   font-family:'Cormorant SC',serif;
@@ -525,16 +525,79 @@ input,textarea{
 input:focus,textarea:focus{border-color:rgba(201,168,76,0.5);}
 input::placeholder,textarea::placeholder{color:rgba(247,242,232,0.25);font-style:italic;}
 textarea{resize:vertical;min-height:120px;}
-.submit-btn{
-  font-family:'Cormorant SC',serif;
-  font-size:0.78rem;letter-spacing:0.18em;
-  background:var(--gold);color:var(--ink);
-  border:none;padding:14px 32px;
-  cursor:pointer;width:100%;
-  transition:background 0.2s;
-  margin-top:6px;
+.submit-btn{display:none;}
+
+/* ── FLOATING WHATSAPP ── */
+.wa-float{
+  position:fixed;bottom:32px;right:32px;z-index:1000;
+  width:58px;height:58px;background:#25D366;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 24px rgba(37,211,102,0.35);text-decoration:none;
+  animation:waPop 0.7s cubic-bezier(0.34,1.56,0.64,1) 1.2s both;
+  transition:transform 0.25s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.25s;
 }
-.submit-btn:hover{background:var(--gold-lt);}
+.wa-float:hover{transform:scale(1.12);box-shadow:0 8px 36px rgba(37,211,102,0.5);}
+.wa-float svg{width:28px;height:28px;fill:#fff;}
+.wa-pulse{
+  position:absolute;inset:-5px;border-radius:50%;
+  border:2px solid rgba(37,211,102,0.4);
+  animation:waPulse 2.2s ease-out infinite;
+}
+.wa-pulse2{
+  position:absolute;inset:-13px;border-radius:50%;
+  border:1px solid rgba(37,211,102,0.2);
+  animation:waPulse 2.2s ease-out 0.7s infinite;
+}
+.wa-tooltip{
+  position:absolute;right:calc(100% + 14px);top:50%;transform:translateY(-50%);
+  background:var(--ink);color:var(--gold-lt);
+  font-family:'Cormorant SC',serif;font-size:0.7rem;letter-spacing:0.12em;
+  white-space:nowrap;padding:7px 16px;border:1px solid rgba(201,168,76,0.2);
+  opacity:0;pointer-events:none;transition:opacity 0.2s;
+}
+.wa-float:hover .wa-tooltip{opacity:1;}
+@keyframes waPop{
+  from{opacity:0;transform:scale(0) rotate(-180deg);}
+  to{opacity:1;transform:scale(1) rotate(0);}
+}
+@keyframes waPulse{
+  0%{transform:scale(1);opacity:0.7;}
+  100%{transform:scale(1.8);opacity:0;}
+}
+
+/* ── WA CONTACT BLOCK ── */
+.wa-contact-block{
+  display:flex;flex-direction:column;align-items:center;
+  gap:24px;padding:44px 36px;
+  border:1px solid rgba(201,168,76,0.2);
+  background:rgba(201,168,76,0.04);text-align:center;
+}
+.wa-contact-block p{
+  font-size:1rem;font-style:italic;
+  color:rgba(247,242,232,0.55);line-height:1.8;max-width:300px;
+}
+.wa-big-btn{
+  display:inline-flex;align-items:center;gap:14px;
+  font-family:'Cormorant SC',serif;font-size:0.88rem;letter-spacing:0.18em;
+  background:#25D366;color:#fff;padding:16px 36px;
+  text-decoration:none;transition:background 0.2s,transform 0.2s;
+}
+.wa-big-btn:hover{background:#1ebe5a;transform:translateY(-2px);}
+.wa-big-btn svg{width:20px;height:20px;fill:#fff;flex-shrink:0;}
+.wa-alt-links{display:flex;flex-direction:column;gap:8px;width:100%;}
+.wa-alt-link{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;border:1px solid rgba(201,168,76,0.15);
+  text-decoration:none;transition:border-color 0.2s,background 0.2s;
+}
+.wa-alt-link:hover{border-color:rgba(201,168,76,0.4);background:rgba(201,168,76,0.05);}
+.wa-alt-icon{
+  width:36px;height:36px;flex-shrink:0;
+  border:1px solid rgba(201,168,76,0.2);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;
+}
+.wa-alt-label{font-family:'Cormorant SC',serif;font-size:0.65rem;letter-spacing:0.15em;color:var(--gold);margin-bottom:2px;}
+.wa-alt-val{font-size:0.88rem;color:rgba(247,242,232,0.7);}
 
 /* ── FOOTER ── */
 footer{
@@ -582,6 +645,17 @@ footer{
 </style>
 </head>
 <body>
+
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/27787853755" target="_blank" class="wa-float" aria-label="WhatsApp Mr Moyo">
+  <div class="wa-pulse"></div>
+  <div class="wa-pulse2"></div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.82l6.154-1.448A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.001-1.366l-.358-.213-3.724.876.916-3.618-.234-.373A9.818 9.818 0 1112 21.818z"/>
+  </svg>
+  <span class="wa-tooltip">WhatsApp Mr Moyo</span>
+</a>
 
 <!-- NAV -->
 <nav>
@@ -948,24 +1022,33 @@ footer{
       </div>
     </div>
 
-    <div class="contact-form fade">
-      <div class="form-group">
-        <label for="name">Your Name</label>
-        <input type="text" id="name" placeholder="Full name"/>
+    <div class="wa-contact-block fade">
+      <p>Whether you are a prospective employer, a parent, or a fellow educator — the fastest way to reach Mr Moyo is directly on WhatsApp.</p>
+
+      <a href="https://wa.me/27787853755" target="_blank" class="wa-big-btn">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+          <path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.122 1.532 5.856L.057 23.82l6.154-1.448A11.934 11.934 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.001-1.366l-.358-.213-3.724.876.916-3.618-.234-.373A9.818 9.818 0 1112 21.818z"/>
+        </svg>
+        Message on WhatsApp
+      </a>
+
+      <div class="wa-alt-links">
+        <a href="mailto:innocentmoyo58@gmail.com" class="wa-alt-link">
+          <div class="wa-alt-icon">✉️</div>
+          <div>
+            <div class="wa-alt-label">Email</div>
+            <div class="wa-alt-val">innocentmoyo58@gmail.com</div>
+          </div>
+        </a>
+        <a href="tel:+27787853755" class="wa-alt-link">
+          <div class="wa-alt-icon">📞</div>
+          <div>
+            <div class="wa-alt-label">Phone</div>
+            <div class="wa-alt-val">+27 78 785 3755</div>
+          </div>
+        </a>
       </div>
-      <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" placeholder="your@email.com"/>
-      </div>
-      <div class="form-group">
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" placeholder="e.g. Teaching opportunity, collaboration..."/>
-      </div>
-      <div class="form-group">
-        <label for="msg">Message</label>
-        <textarea id="msg" placeholder="Write your message here..."></textarea>
-      </div>
-      <button class="submit-btn" onclick="window.location.href='mailto:innocentmoyo58@gmail.com'">Send Message</button>
     </div>
   </div>
 </section>
